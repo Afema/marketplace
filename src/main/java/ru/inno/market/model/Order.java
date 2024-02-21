@@ -36,7 +36,7 @@ public class Order {
 
     public void applyDiscount(double discount) {
         if (!discountApplied) {
-            totalPrice *= (1- discount);
+            totalPrice *= (1 - discount);
             discountApplied = true;
         }
     }
@@ -56,6 +56,7 @@ public class Order {
     public boolean isDiscountApplied() {
         return discountApplied;
     }
+
 
     @Override
     public boolean equals(Object o) {

@@ -15,19 +15,19 @@ public class MarketService {
         orders = new HashMap<>();
     }
 
-    public int createOrderFor(Client client){
-        int id = orderCounter++;
+    public int createOrderFor(Client client) {
+        int id = ++orderCounter; //был баг orderCounter++ => Order.id был равен 0 при вызове OrderFor;
         Order order = new Order(id, client);
         orders.put(id, order);
 
         return order.getId();
     }
 
-    public void addItemToOrder(Item item, int orderId ){
+    public void addItemToOrder(Item item, int orderId) {
         orders.get(orderId).addItem(item);
     }
 
-    public double applyDiscountForOrder(int orderId, PromoCodes codes){
+    public double applyDiscountForOrder(int orderId, PromoCodes codes) {
         Order order = orders.get(orderId);
         order.applyDiscount(codes.getDiscount());
         return order.getTotalPrice();

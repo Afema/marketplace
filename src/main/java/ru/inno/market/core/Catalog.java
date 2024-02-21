@@ -63,10 +63,10 @@ public class Catalog {
         );
     }
 
-    public Item getItemById(int id){
+    public Item getItemById(int id) {
         Item item = storage.keySet().stream().filter(x -> x.getId() == id).findFirst().orElseThrow();
         int count = storage.get(item);
-        if (count > 0){
+        if (count > 0) {
             count -= 1;
             storage.put(item, count);
             return item;
@@ -75,7 +75,7 @@ public class Catalog {
 
     }
 
-    public int getCountForItem(Item i){
+    public int getCountForItem(Item i) {
         return storage.get(i);
     }
 }
